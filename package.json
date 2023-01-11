@@ -12,6 +12,8 @@
   "author": "Semyonov Nikita",
   "license": "ISC",
   "dependencies": {
-    "@hexlet/chat-server": "^1.1.6"
+    "@hexlet/chat-server": "^1.1.6",
+    "formik": "^2.2.9",
+    "react-router-dom": "^6.6.2"
   }
 }
