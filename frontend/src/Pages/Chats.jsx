@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Channels from './Components/Channels';
 import Header from './Components/Header';
-// eslint-disable-next-line import/no-cycle
 import Messages from './Components/Messages';
 import Popup from './Components/Popup';
 

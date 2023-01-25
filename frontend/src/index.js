@@ -3,16 +3,27 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Provider as ErrorProvider, ErrorBoundary } from '@rollbar/react'; // Provider imports 'rollbar'
 import { store } from './storeManager/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './i18n';
+
+const rollbarConfig = {
+  accessToken: '2a5c922ae13b493c990a30a42d2d2abc',
+  environment: 'testenv',
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ErrorProvider config={rollbarConfig}>
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
+        </ErrorProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
