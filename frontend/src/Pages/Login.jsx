@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Row from 'react-bootstrap/esm/Row';
 import Button from 'react-bootstrap/esm/Button';
 
@@ -40,7 +40,7 @@ const Login = ({ userLogin, fetchError }) => {
                   <Form onSubmit={formik.handleSubmit}>
                     <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
                     <Form.Group className="mb-3" id="username">
-                      <FloatingLabel label={t('forms.login.name')}>
+                      <FloatingLabel controlId="username" label={t('forms.login.name')}>
                         <Form.Control
                           id="username"
                           name="username"
@@ -55,7 +55,7 @@ const Login = ({ userLogin, fetchError }) => {
                       <Form.Text className="text-danger">{formik.errors.username}</Form.Text>)}
                     </Form.Group>
                     <Form.Group className="mb-3" id="password">
-                      <FloatingLabel label={t('forms.login.password')}>
+                      <FloatingLabel controlId="password" label={t('forms.login.password')}>
                         <Form.Control
                           id="password"
                           name="password"

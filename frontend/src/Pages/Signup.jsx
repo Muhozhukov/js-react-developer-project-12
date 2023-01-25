@@ -3,7 +3,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
-import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -43,7 +43,7 @@ const Signup = ({ createNewUser, fetchError }) => {
                 <Form onSubmit={formik.handleSubmit}>
                   <h1 className="text-center mb-4">{t('forms.signup.title')}</h1>
                   <Form.Group className="mb-3" id="username">
-                    <FloatingLabel label={t('forms.signup.name')}>
+                    <FloatingLabel controlId="username" label={t('forms.signup.name')}>
                       <Form.Control
                         id="username"
                         name="username"
@@ -58,7 +58,7 @@ const Signup = ({ createNewUser, fetchError }) => {
                     <Form.Text className="text-danger">{formik.errors.username}</Form.Text>)}
                   </Form.Group>
                   <Form.Group className="mb-3" id="password">
-                    <FloatingLabel label={t('forms.signup.password')}>
+                    <FloatingLabel controlId="password" label={t('forms.signup.password')}>
                       <Form.Control
                         id="password"
                         name="password"
@@ -73,7 +73,7 @@ const Signup = ({ createNewUser, fetchError }) => {
                     <Form.Text className="text-danger">{formik.errors.password}</Form.Text>)}
                   </Form.Group>
                   <Form.Group className="mb-3" id="repeatPassword">
-                    <FloatingLabel label={t('forms.signup.repeatPassword')}>
+                    <FloatingLabel controlId="repeatPassword" label={t('forms.signup.repeatPassword')}>
                       <Form.Control
                         id="repeatPassword"
                         name="repeatPassword"
