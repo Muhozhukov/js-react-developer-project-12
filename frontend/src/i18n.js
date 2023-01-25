@@ -25,12 +25,12 @@ const resources = {
         },
         addChannel: {
           title: 'Добавить канал',
-          label: 'Название канала',
+          label: 'Имя канала',
           placeholder: 'Введите название канала',
         },
         renameChannel: {
           title: 'Переименовать канал',
-          label: 'Название канала',
+          label: 'Имя канала',
           placeholder: 'Введите название канала',
         },
         removeChannel: {

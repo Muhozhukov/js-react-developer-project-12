@@ -45,22 +45,46 @@ const Channels = () => {
       </div>
       <ul className="nav flex-column nav-pills nav-fill px-2">
         {channels.map((channel) => (
-          <li key={channel.id} className="d-flex nav-item w-100">
-            <Button
-              variant={currentChannel === channel.id && 'secondary'}
-              className="w-100 rounded-0 text-start text-truncate"
-              onClick={() => dispatch(changeChannel(channel.id))}
-            >
-              <span className="me-1">#</span>
-              {channel.name}
-            </Button>
-            {channel.removable && (
+          channel.removable ? (
+            <li key={channel.id} className="d-flex nav-item w-100">
+              <Dropdown className="w-100" as={ButtonGroup}>
+                <Button
+                  variant={currentChannel === channel.id && 'secondary'}
+                  className="w-100 rounded-0 text-start text-truncate"
+                  onClick={() => dispatch(changeChannel(channel.id))}
+                >
+                  <span className="me-1">#</span>
+                  {channel.name}
+                </Button>
+
+                <Dropdown.Toggle split variant={currentChannel === channel.id && 'secondary'}>
+                  <span className="visually-hidden">Управление каналом</span>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu variant="light" title="">
+                  <Dropdown.Item eventKey="1" onClick={() => openRemoveChannelPopup(channel.id)}>{t('buttons.delete')}</Dropdown.Item>
+                  <Dropdown.Item eventKey="2" onClick={() => openRenameChannelPopup(channel.id)}>{t('buttons.rename')}</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
+          ) : (
+            <li key={channel.id} className="d-flex nav-item w-100">
+              <Button
+                variant={currentChannel === channel.id && 'secondary'}
+                className="w-100 rounded-0 text-start text-truncate"
+                onClick={() => dispatch(changeChannel(channel.id))}
+              >
+                <span className="me-1">#</span>
+                {channel.name}
+              </Button>
+              {channel.removable && (
               <DropdownButton variant="light" as={ButtonGroup} title="" id="bg-nested-dropdown">
                 <Dropdown.Item eventKey="1" onClick={() => openRemoveChannelPopup(channel.id)}>{t('buttons.delete')}</Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={() => openRenameChannelPopup(channel.id)}>{t('buttons.rename')}</Dropdown.Item>
               </DropdownButton>
-            )}
-          </li>
+              )}
+            </li>
+          )
         ))}
       </ul>
     </Col>

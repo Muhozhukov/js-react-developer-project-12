@@ -59,10 +59,10 @@ const PopupBody = ({ closeModal }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
-            <Form.Group className="mb-3" id="channelName">
+            <Form.Group className="mb-3" controlId="channelName">
               <Form.Label>{t('forms.addChannel.label')}</Form.Label>
               <Form.Control
-                id="channelName"
+                // id="channelName"
                 name="channelName"
                 type="text"
                 placeholder={t('forms.addChannel.placeholder')}
@@ -88,10 +88,10 @@ const PopupBody = ({ closeModal }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
-            <Form.Group className="mb-3" id="channelName">
+            <Form.Group className="mb-3" controlId="channelName">
               <Form.Label>{t('forms.renameChannel.label')}</Form.Label>
               <Form.Control
-                id="channelName"
+                // id="channelName"
                 name="channelName"
                 type="text"
                 placeholder={t('forms.addChannel.placeholder')}
