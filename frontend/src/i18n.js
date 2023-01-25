@@ -63,7 +63,7 @@ const resources = {
       alerts: {
         newChannel: 'Канал создан',
         renameChannel: 'Канал переименован',
-        removeChannel: 'Канал удален',
+        removeChannel: 'Канал удалён',
         loginFail: 'Неверные имя пользователя или пароль',
         signupFail: 'Пользователь с таким именем уже существует',
         connectionFailed: 'Ошибка соединения',

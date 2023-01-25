@@ -103,7 +103,7 @@ const App = () => {
       dispatch(addChannel(payload));
     });
     socket.on('removeChannel', (payload) => {
-      toast.info(t('alerts.removeChannel'));
+      toast.success(t('alerts.removeChannel'));
       dispatch(removeChannel(payload));
     });
     socket.on('renameChannel', (payload) => {
