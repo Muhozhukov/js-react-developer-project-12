@@ -26,7 +26,6 @@ const Signup = ({ createNewUser, fetchError }) => {
         .min(6, t('forms.signup.passwordValidationError'))
         .required('Пароль обязателен для заполнения'),
       repeatPassword: Yup.string()
-        .min(6, `${t('forms.signup.passwordValidationError')}`)
         .required('Пароль обязателен для заполнения')
         .oneOf([Yup.ref('password'), null], t('forms.signup.confirmPasswordValidationError')),
     }),
