@@ -39,7 +39,7 @@ const Login = ({ userLogin, fetchError }) => {
                 <Card.Body className="p-5">
                   <Form onSubmit={formik.handleSubmit}>
                     <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
-                    <Form.Group className="mb-3" id="username">
+                    <Form.Group className="mb-3">
                       <FloatingLabel controlId="username" label={t('forms.login.name')}>
                         <Form.Control
                           id="username"
@@ -54,7 +54,7 @@ const Login = ({ userLogin, fetchError }) => {
                       {formik.touched.username && formik.errors.username && (
                       <Form.Text className="text-danger">{formik.errors.username}</Form.Text>)}
                     </Form.Group>
-                    <Form.Group className="mb-3" id="password">
+                    <Form.Group className="mb-3">
                       <FloatingLabel controlId="password" label={t('forms.login.password')}>
                         <Form.Control
                           id="password"
