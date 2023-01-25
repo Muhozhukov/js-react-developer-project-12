@@ -22,7 +22,6 @@ const Login = ({ userLogin, fetchError }) => {
       username: Yup.string()
         .required('Имя пользователя обязательно для заполнения'),
       password: Yup.string()
-        .min(5, 'Длина пароля должна быть не менее 5 символов')
         .required('Пароль обязателен для заполнения'),
     }),
     onSubmit: (values) => {
