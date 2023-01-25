@@ -88,6 +88,7 @@ const App = () => {
   };
 
   useEffect(() => {
+    checkToken();
     socket.on('newMessage', (payload) => {
       dispatch(newMessage(payload));
     });
