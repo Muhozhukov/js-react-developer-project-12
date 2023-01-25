@@ -25,7 +25,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './Components/Header';
 
 const App = () => {
-  const { t } = useTranslation;
+  const { t } = useTranslation();
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState('');
   const [fetchError, setFetchError] = useState('');
@@ -60,6 +60,7 @@ const App = () => {
   };
 
   const userLogin = (data) => {
+    console.log(12, t('forms.signup.title'));
     axios.post('/api/v1/login', data)
       .then((res) => {
         const jwt = res.data.token;
@@ -74,7 +75,10 @@ const App = () => {
         localStorage.setItem('username', res.data.username);
         return res.data;
       })
-      .catch(() => toast.error(t('alerts.loginFail')));
+      .catch(() => {
+        const err = t('alerts.loginFail');
+        toast.error(err);
+      });
   };
 
   const createNewUser = (data) => {

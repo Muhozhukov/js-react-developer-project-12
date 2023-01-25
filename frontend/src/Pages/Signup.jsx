@@ -19,14 +19,14 @@ const Signup = ({ createNewUser, fetchError }) => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        // .required('Имя пользователя обязательно для заполнения')
+        .required('Имя пользователя обязательно для заполнения')
         .min(3, t('forms.signup.nameValidationError'))
         .max(20, t('forms.signup.nameValidationError')),
       password: Yup.string()
-        .min(6, t('forms.signup.passwordValidationError')),
-      // .required('Пароль обязателен для заполнения'),
+        .min(6, t('forms.signup.passwordValidationError'))
+        .required('Пароль обязателен для заполнения'),
       repeatPassword: Yup.string()
-        // .required('Пароль обязателен для заполнения')
+        .required('Пароль обязателен для заполнения')
         .oneOf([Yup.ref('password'), null], t('forms.signup.confirmPasswordValidationError')),
     }),
     onSubmit: (values) => {
@@ -42,51 +42,48 @@ const Signup = ({ createNewUser, fetchError }) => {
               <Card.Body className="p-5">
                 <Form onSubmit={formik.handleSubmit}>
                   <h1 className="text-center mb-4">{t('forms.signup.title')}</h1>
-                  <Form.Group className="mb-3">
-                    <FloatingLabel controlId="username" label={t('forms.signup.name')}>
-                      <Form.Control
-                        id="username"
-                        name="username"
-                        type="text"
-                        placeholder="Введите имя пользователя"
-                        value={formik.values.username}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </FloatingLabel>
-                    {formik.touched.username && formik.errors.username && (
-                    <Form.Text className="text-danger">{formik.errors.username}</Form.Text>)}
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <FloatingLabel controlId="password" label={t('forms.signup.password')}>
-                      <Form.Control
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Введите пароль"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </FloatingLabel>
-                    {formik.touched.password && formik.errors.password && (
-                    <Form.Text className="text-danger">{formik.errors.password}</Form.Text>)}
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <FloatingLabel controlId="repeatPassword" label={t('forms.signup.repeatPassword')}>
-                      <Form.Control
-                        id="repeatPassword"
-                        name="repeatPassword"
-                        type="password"
-                        placeholder="Введите пароль"
-                        value={formik.values.repeatPassword}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </FloatingLabel>
-                    {formik.touched.repeatPassword && formik.errors.repeatPassword && (
-                    <Form.Text className="text-danger">{formik.errors.repeatPassword}</Form.Text>)}
-                  </Form.Group>
+                  <FloatingLabel controlId="username" className="mb-3" label={t('forms.signup.name')}>
+                    <Form.Control
+                      // id="username"
+                      name="username"
+                      type="text"
+                      placeholder="Введите имя пользователя"
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.username && !formik.errors.username}
+                      isInvalid={formik.touched.username && !!formik.errors.username}
+                    />
+                    <Form.Control.Feedback type="invalid" tooltip>{formik.errors.username}</Form.Control.Feedback>
+                  </FloatingLabel>
+                  <FloatingLabel className="mb-3" controlId="password" label={t('forms.signup.password')}>
+                    <Form.Control
+                        // id="password"
+                      name="password"
+                      type="password"
+                      placeholder="Введите пароль"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.password && !formik.errors.password}
+                      isInvalid={formik.touched.password && !!formik.errors.password}
+                    />
+                    <Form.Control.Feedback type="invalid" tooltip>{formik.errors.password}</Form.Control.Feedback>
+                  </FloatingLabel>
+                  <FloatingLabel className="mb-3" controlId="repeatPassword" label={t('forms.signup.repeatPassword')}>
+                    <Form.Control
+                        // id="repeatPassword"
+                      name="repeatPassword"
+                      type="password"
+                      placeholder="Введите пароль"
+                      value={formik.values.repeatPassword}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.repeatPassword && !formik.errors.repeatPassword}
+                      isInvalid={formik.touched.repeatPassword && !!formik.errors.repeatPassword}
+                    />
+                    <Form.Control.Feedback type="invalid" tooltip>{formik.errors.repeatPassword}</Form.Control.Feedback>
+                  </FloatingLabel>
                   <Button type="submit" variant="outline-primary" className="w-100">{t('forms.signup.signupButton')}</Button>
                 </Form>
                 {fetchError && <p className="text-danger align-center">{fetchError}</p>}

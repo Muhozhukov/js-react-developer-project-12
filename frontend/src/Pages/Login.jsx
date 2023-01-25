@@ -39,36 +39,34 @@ const Login = ({ userLogin, fetchError }) => {
                 <Card.Body className="p-5">
                   <Form onSubmit={formik.handleSubmit}>
                     <h1 className="text-center mb-4">{t('forms.login.title')}</h1>
-                    <Form.Group className="mb-3">
-                      <FloatingLabel controlId="username" label={t('forms.login.name')}>
-                        <Form.Control
-                          id="username"
-                          name="username"
-                          type="text"
-                          placeholder="Введите имя пользователя"
-                          value={formik.values.username}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                        />
-                      </FloatingLabel>
-                      {formik.touched.username && formik.errors.username && (
-                      <Form.Text className="text-danger">{formik.errors.username}</Form.Text>)}
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                      <FloatingLabel controlId="password" label={t('forms.login.password')}>
-                        <Form.Control
-                          id="password"
-                          name="password"
-                          type="password"
-                          placeholder="Введите пароль"
-                          value={formik.values.password}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                        />
-                      </FloatingLabel>
-                      {formik.touched.password && formik.errors.password && (
-                      <Form.Text className="text-danger">{formik.errors.password}</Form.Text>)}
-                    </Form.Group>
+                    <FloatingLabel controlId="username" className="mb-3" label={t('forms.login.name')}>
+                      <Form.Control
+                          // id="username"
+                        name="username"
+                        type="text"
+                        placeholder="Введите имя пользователя"
+                        value={formik.values.username}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        isValid={formik.touched.username && !formik.errors.username}
+                        isInvalid={formik.touched.username && !!formik.errors.username}
+                      />
+                      <Form.Control.Feedback type="invalid" tooltip>{formik.errors.username}</Form.Control.Feedback>
+                    </FloatingLabel>
+                    <FloatingLabel className="mb-3" controlId="password" label={t('forms.login.password')}>
+                      <Form.Control
+                          // id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Введите пароль"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        isValid={formik.touched.password && !formik.errors.password}
+                        isInvalid={formik.touched.password && !!formik.errors.password}
+                      />
+                      <Form.Control.Feedback type="invalid" tooltip>{formik.errors.password}</Form.Control.Feedback>
+                    </FloatingLabel>
                     <Button type="submit" variant="primary" className="w-100">{t('forms.login.loginButton')}</Button>
                   </Form>
                   {fetchError && <p className="text-danger align-center">{fetchError}</p>}
