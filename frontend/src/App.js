@@ -109,7 +109,7 @@ const App = () => {
       socket.off('removeChannel');
       socket.off('renameChannel');
     };
-  });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     console.log(isLogin);

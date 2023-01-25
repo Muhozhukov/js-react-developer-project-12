@@ -7,12 +7,16 @@ import { Provider as ErrorProvider, ErrorBoundary } from '@rollbar/react'; // Pr
 import { store } from './storeManager/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './i18n';
 
 const rollbarConfig = {
   accessToken: '2a5c922ae13b493c990a30a42d2d2abc',
   environment: 'testenv',
 };
+
+// function TestError() {
+//   const a = null;
+//   return a.hello();
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
