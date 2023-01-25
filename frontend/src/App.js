@@ -70,6 +70,7 @@ const App = () => {
         }
         setUserInfo(res.data.username);
         setFetchError('');
+        checkToken();
         localStorage.setItem('username', res.data.username);
         return res.data;
       })

@@ -20,15 +20,15 @@ const Signup = ({ createNewUser, fetchError }) => {
     validationSchema: Yup.object({
       username: Yup.string()
         .required('Имя пользователя обязательно для заполнения')
-        .min(3, t('alerts.nameValidationError'))
-        .max(20, t('alerts.nameValidationError')),
+        .min(3, t('forms.signup.nameValidationError'))
+        .max(20, t('forms.signup.nameValidationError')),
       password: Yup.string()
-        .min(6, t('alerts.passwordValidationError'))
+        .min(6, t('forms.signup.passwordValidationError'))
         .required('Пароль обязателен для заполнения'),
       repeatPassword: Yup.string()
-        .min(6, t('alerts.passwordValidationError'))
+        .min(6, `${t('forms.signup.passwordValidationError')}`)
         .required('Пароль обязателен для заполнения')
-        .oneOf([Yup.ref('password'), null], t('alerts.confirmPasswordValidationError')),
+        .oneOf([Yup.ref('password'), null], t('forms.signup.confirmPasswordValidationError')),
     }),
     onSubmit: (values) => {
       createNewUser(values);
