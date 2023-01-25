@@ -109,7 +109,7 @@ const App = () => {
       socket.off('removeChannel');
       socket.off('renameChannel');
     };
-  }, []);
+  });
 
   useEffect(() => {
     console.log(isLogin);
