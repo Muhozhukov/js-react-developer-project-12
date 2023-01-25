@@ -1,5 +1,5 @@
 /* eslint-disable react/no-children-prop */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
@@ -29,6 +29,10 @@ const Login = ({ userLogin, fetchError }) => {
       userLogin(values);
     },
   });
+  useEffect(() => {
+    if (fetchError) formik.errors.password = fetchError;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchError]);
   return (
     <div className="d-flex flex-column h-100">
       <Row className="justify-content-center align-content-center h-100">
@@ -51,7 +55,6 @@ const Login = ({ userLogin, fetchError }) => {
                         isValid={formik.touched.username && !formik.errors.username}
                         isInvalid={formik.touched.username && !!formik.errors.username}
                       />
-                      <Form.Control.Feedback type="invalid" tooltip>{formik.errors.username}</Form.Control.Feedback>
                     </FloatingLabel>
                     <FloatingLabel className="mb-3" controlId="password" label={t('forms.login.password')}>
                       <Form.Control

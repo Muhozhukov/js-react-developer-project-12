@@ -77,6 +77,7 @@ const App = () => {
       })
       .catch(() => {
         const err = t('alerts.loginFail');
+        setFetchError(err);
         toast.error(err);
       });
   };
