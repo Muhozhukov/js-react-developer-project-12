@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
-import { socket } from '../../utils/socket';
+import { socket } from '../utils/socket';
 import 'react-toastify/dist/ReactToastify.css';
 
 const PopupBody = ({ closeModal }) => {

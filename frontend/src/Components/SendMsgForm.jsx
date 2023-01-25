@@ -3,9 +3,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import sendMessage from '../../images/sendMessage.svg';
+import sendMessage from '../images/sendMessage.svg';
 // eslint-disable-next-line import/no-cycle
-import { socket } from '../../utils/socket';
+import { socket } from '../utils/socket';
 
 import 'react-toastify/dist/ReactToastify.css';
 

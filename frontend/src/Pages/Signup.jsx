@@ -7,7 +7,6 @@ import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import Header from './Components/Header';
 
 const Signup = ({ createNewUser, fetchError }) => {
   const { t } = useTranslation();
@@ -36,7 +35,6 @@ const Signup = ({ createNewUser, fetchError }) => {
   });
   return (
     <div className="d-flex flex-column h-100">
-      <Header />
       <Container fluid>
         <div className="row justify-content-center align-content-center h-100">
           <div className="col-12 col-md-8 col-xxl-6">

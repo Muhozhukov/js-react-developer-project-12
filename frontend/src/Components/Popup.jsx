@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
-import { manipulateModal } from '../../storeManager/chatSlice';
+import { manipulateModal } from '../storeManager/chatSlice';
 import PopupBody from './PopupBody';
 
 const Popup = () => {

@@ -6,8 +6,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { changeChannel, manipulateModal } from '../../storeManager/chatSlice';
-import addChannel from '../../images/addChannel.svg';
+import { changeChannel, manipulateModal } from '../storeManager/chatSlice';
+import addChannel from '../images/addChannel.svg';
 
 const Channels = () => {
   const { t } = useTranslation();

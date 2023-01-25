@@ -22,6 +22,7 @@ import NotFoundPage from './Pages/NotFoundPage';
 import UserContext from './context/userContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './Components/Header';
 
 const App = () => {
   const { t } = useTranslation;
@@ -87,7 +88,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    checkToken();
     socket.on('newMessage', (payload) => {
       dispatch(newMessage(payload));
     });
@@ -113,14 +113,17 @@ const App = () => {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    console.log(isLogin);
-  }, [isLogin]);
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate('/login');
+  };
 
   return (
     <UserContext.Provider value={userInfo}>
       <div className="h-100">
         <ToastContainer />
+        <Header logout={logout} isLogin={isLogin} />
         <Routes>
           <Route path="/" element={<Chats />} />
           <Route path="/login" element={<Login userLogin={userLogin} fetchError={fetchError} />} />
