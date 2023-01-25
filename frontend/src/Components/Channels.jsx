@@ -7,7 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { changeChannel, manipulateModal } from '../storeManager/chatSlice';
-import addChannel from '../images/addChannel.svg';
+// import addChannel from '../images/addChannel.svg';
 
 const Channels = () => {
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ const Channels = () => {
       <div className="d-flex justify-content-between mb-2 ps-4 pe-2">
         <span>{t('Channels title')}</span>
         <Button className="p-0" variant="light" onClick={openAddChannelPopup}>
-          <img src={addChannel} alt="Добавить канал" />
+          +
         </Button>
       </div>
       <ul className="nav flex-column nav-pills nav-fill px-2">

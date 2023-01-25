@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import Row from 'react-bootstrap/esm/Row';
+import Button from 'react-bootstrap/esm/Button';
 
 const Login = ({ userLogin, fetchError }) => {
   const { t } = useTranslation();
@@ -68,7 +69,7 @@ const Login = ({ userLogin, fetchError }) => {
                       {formik.touched.password && formik.errors.password && (
                       <Form.Text className="text-danger">{formik.errors.password}</Form.Text>)}
                     </Form.Group>
-                    <Form.Control type="submit" className="btn btn-primary" value={t('forms.login.loginButton')} />
+                    <Button type="submit" variant="primary" className="w-100">{t('forms.login.loginButton')}</Button>
                   </Form>
                   {fetchError && <p className="text-danger align-center">{fetchError}</p>}
                 </Card.Body>

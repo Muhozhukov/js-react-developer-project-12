@@ -7,6 +7,7 @@ import FloatingLabel from 'react-bootstrap/esm/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/esm/Button';
 
 const Signup = ({ createNewUser, fetchError }) => {
   const { t } = useTranslation();
@@ -19,15 +20,15 @@ const Signup = ({ createNewUser, fetchError }) => {
     validationSchema: Yup.object({
       username: Yup.string()
         .required('Имя пользователя обязательно для заполнения')
-        .min(3, 'Имя должно содержать минимум 3 символа')
-        .max(20, 'Имя должно содержать максимум 20 символов'),
+        .min(3, t('alerts.nameValidationError'))
+        .max(20, t('alerts.nameValidationError')),
       password: Yup.string()
-        .min(6, 'Длина пароля должна быть не менее 6 символов')
+        .min(6, t('alerts.passwordValidationError'))
         .required('Пароль обязателен для заполнения'),
       repeatPassword: Yup.string()
-        .min(6, 'Длина пароля должна быть не менее 6 символов')
+        .min(6, t('alerts.passwordValidationError'))
         .required('Пароль обязателен для заполнения')
-        .oneOf([Yup.ref('password'), null], 'Пароли не совпадают'),
+        .oneOf([Yup.ref('password'), null], t('alerts.confirmPasswordValidationError')),
     }),
     onSubmit: (values) => {
       createNewUser(values);
@@ -87,7 +88,7 @@ const Signup = ({ createNewUser, fetchError }) => {
                     {formik.touched.repeatPassword && formik.errors.repeatPassword && (
                     <Form.Text className="text-danger">{formik.errors.repeatPassword}</Form.Text>)}
                   </Form.Group>
-                  <Form.Control type="submit" className="btn btn-primary" value={t('forms.signup.signupButton')} />
+                  <Button type="submit" variant="outline-primary" className="w-100">{t('forms.signup.signupButton')}</Button>
                 </Form>
                 {fetchError && <p className="text-danger align-center">{fetchError}</p>}
               </Card.Body>

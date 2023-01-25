@@ -28,7 +28,7 @@ const SendMsgForm = () => {
           <Form.Control
             className="border-0 p-0 ps-2 form-control"
             placeholder={t('forms.sendMessage.placeholder')}
-            aria-label="Сообщение"
+            aria-label="Новое сообщение"
             value={msgText}
             onChange={(e) => setMsgText(e.target.value)}
           />
