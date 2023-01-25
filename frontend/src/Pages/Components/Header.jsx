@@ -9,12 +9,12 @@ const Header = ({ logout }) => {
   return (
     <Nav justify navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <Nav.Item>
-        <Link to="/">Home</Link>
+        <Link to="/">{t('links.main')}</Link>
       </Nav.Item>
       {logout && (
       <Nav.Item>
         <Nav.Link eventKey="logout" onClick={logout}>
-          <Button>{t('buttons.exit')}</Button>
+          <Button>{t('links.exit')}</Button>
         </Nav.Link>
       </Nav.Item>
       )}

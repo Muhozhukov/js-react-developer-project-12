@@ -70,7 +70,7 @@ const Login = ({ userLogin, fetchError }) => {
                       {formik.touched.password && formik.errors.password && (
                       <Form.Text className="text-danger">{formik.errors.password}</Form.Text>)}
                     </Form.Group>
-                    <Form.Control type="submit" className="btn btn-primary" value={t('buttons.enter')} />
+                    <Form.Control type="submit" className="btn btn-primary" value={t('forms.login.loginButton')} />
                   </Form>
                   {fetchError && <p className="text-danger align-center">{fetchError}</p>}
                 </Card.Body>

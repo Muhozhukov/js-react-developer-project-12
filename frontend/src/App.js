@@ -3,6 +3,7 @@ import {
   Routes, Route, useNavigate,
 } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import * as leoProfanity from 'leo-profanity';
 import { ToastContainer, toast } from 'react-toastify';
@@ -23,6 +24,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
+  const { t } = useTranslation;
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState('');
   const [fetchError, setFetchError] = useState('');
@@ -70,7 +72,7 @@ const App = () => {
         localStorage.setItem('username', res.data.username);
         return res.data;
       })
-      .catch((err) => setFetchError(`Ошибка, статус ${err.response.status}`));
+      .catch(() => toast.error(t('alerts.loginFail')));
   };
 
   const createNewUser = (data) => {
@@ -81,7 +83,7 @@ const App = () => {
         localStorage.setItem('username', res.data.username);
         checkToken();
       })
-      .catch((err) => setFetchError(`Ошибка, статус ${err.response.status}`));
+      .catch(() => toast.error(t('alerts.signupFail')));
   };
 
   useEffect(() => {
@@ -90,15 +92,15 @@ const App = () => {
       dispatch(newMessage(payload));
     });
     socket.on('newChannel', (payload) => {
-      toast.success('Новый канал создан!');
+      toast.success(t('alerts.newChannel'));
       dispatch(addChannel(payload));
     });
     socket.on('removeChannel', (payload) => {
-      toast.info('Канал удален!');
+      toast.info(t('alerts.removeChannel'));
       dispatch(removeChannel(payload));
     });
     socket.on('renameChannel', (payload) => {
-      toast.success('Канал переименован!');
+      toast.success(t('alerts.renameChannel'));
       dispatch(renameChannel(payload));
     });
     return () => {
