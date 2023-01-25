@@ -19,14 +19,14 @@ const Signup = ({ createNewUser, fetchError }) => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .required('Имя пользователя обязательно для заполнения')
+        // .required('Имя пользователя обязательно для заполнения')
         .min(3, t('forms.signup.nameValidationError'))
         .max(20, t('forms.signup.nameValidationError')),
       password: Yup.string()
-        .min(6, t('forms.signup.passwordValidationError'))
-        .required('Пароль обязателен для заполнения'),
+        .min(6, t('forms.signup.passwordValidationError')),
+      // .required('Пароль обязателен для заполнения'),
       repeatPassword: Yup.string()
-        .required('Пароль обязателен для заполнения')
+        // .required('Пароль обязателен для заполнения')
         .oneOf([Yup.ref('password'), null], t('forms.signup.confirmPasswordValidationError')),
     }),
     onSubmit: (values) => {
