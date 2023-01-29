@@ -48,7 +48,6 @@ const App = () => {
 
   const checkToken = () => {
     const jwt = localStorage.getItem('jwt');
-    console.log(jwt);
     if (jwt) {
       setIsLogin(true);
       getData();
@@ -64,11 +63,8 @@ const App = () => {
     axios.post('/api/v1/login', data)
       .then((res) => {
         const jwt = res.data.token;
-        if (jwt) {
-          setIsLogin(true);
-          navigate('/');
-          localStorage.setItem('jwt', jwt);
-        }
+        setIsLogin(true);
+        localStorage.setItem('jwt', jwt);
         setUserInfo(res.data.username);
         setFetchError('');
         checkToken();
@@ -120,17 +116,11 @@ const App = () => {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const logout = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    navigate('/login');
-  };
-
   return (
     <UserContext.Provider value={userInfo}>
       <div className="h-100">
         <ToastContainer />
-        <Header logout={logout} isLogin={isLogin} />
+        <Header isLogin={isLogin} />
         <Routes>
           <Route path="/" element={<Chats />} />
           <Route path="/login" element={<Login userLogin={userLogin} fetchError={fetchError} />} />

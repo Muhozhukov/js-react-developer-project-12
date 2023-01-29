@@ -56,11 +56,9 @@ const Channels = () => {
                   <span className="me-1">#</span>
                   {channel.name}
                 </Button>
-
                 <Dropdown.Toggle split variant={currentChannel === channel.id && 'secondary'}>
                   <span className="visually-hidden">Управление каналом</span>
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu variant="light" title="">
                   <Dropdown.Item eventKey="1" onClick={() => openRemoveChannelPopup(channel.id)}>{t('buttons.delete')}</Dropdown.Item>
                   <Dropdown.Item eventKey="2" onClick={() => openRenameChannelPopup(channel.id)}>{t('buttons.rename')}</Dropdown.Item>

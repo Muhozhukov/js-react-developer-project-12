@@ -1,11 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-const Header = ({ logout, isLogin }) => {
+const Header = ({ isLogin }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate('/login');
+  };
   return (
     <Nav justify navbar className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <Nav.Item>
